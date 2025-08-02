@@ -45,18 +45,18 @@ function calculateLove() {
     ${message}
   `;
 
-  // Send data to Google Sheets
   fetch("https://script.google.com/macros/s/AKfycbzt2oPRgnp1XPWI0rHmdW5V_94UPG4_t9j4aDYq7txe_vpGQioJBABoLIy-3DrWoVbJAw/exec", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name1: capitalize(name1),
-      name2: capitalize(name2),
-      percentage: percentage,
-    }),
-  })
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    name1: capitalize(name1),
+    name2: capitalize(name2),
+    percentage: percentage,
+  }),
+})
+
   .then(response => response.text())
   .then(data => console.log("Data sent to Google Sheets:", data))
   .catch(error => console.error("Error sending to Google Sheets:", error));
