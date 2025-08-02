@@ -15,29 +15,7 @@
     <div id="result"></div>
   </div>
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
-
-  <script>
-    // 🔁 Replace this config with your actual Firebase project config:
-    const firebaseConfig = {
-  apiKey: "AIzaSyCtl2aFE4QJHuBKkx7p9FtNexp1oafvhGs",
-  authDomain: "lovecalculator-a8a4b.firebaseapp.com",
-  databaseURL: "https://lovecalculator-a8a4b-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "lovecalculator-a8a4b",
-  storageBucket: "lovecalculator-a8a4b.firebasestorage.app",
-  messagingSenderId: "106250601241",
-  appId: "1:106250601241:web:02de7abb7613dc7aef7b88",
-  measurementId: "G-3HCYNEQD2V"
-};
-
-    // Initialize Firebase
-    const app = firebase.initializeApp(firebaseConfig);
-    const database = firebase.database();
-  </script>
-
-  <!-- Your custom JS file -->
-  <script src="script.js"></script>
+  <!-- Firebase SDK v9 (modular) -->
+  <script type="module" src="script.js"></script>
 </body>
 </html>

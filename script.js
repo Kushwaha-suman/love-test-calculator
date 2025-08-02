@@ -1,4 +1,24 @@
-function calculateLove() {
+// Import Firebase modules (using ES module imports)
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+// Your Firebase project config (replace with your real config)
+const firebaseConfig = {
+  apiKey: "AIzaSyCtl2aFE4QJHuBKkx7p9FtNexp1oafvhGs",
+  authDomain: "lovecalculator-a8a4b.firebaseapp.com",
+  databaseURL: "https://lovecalculator-a8a4b-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "lovecalculator-a8a4b",
+  storageBucket: "lovecalculator-a8a4b.appspot.com",
+  messagingSenderId: "106250601241",
+  appId: "1:106250601241:web:02de7abb7613dc7aef7b88",
+  measurementId: "G-3HCYNEQD2V"
+};
+
+// Initialize Firebase app and database
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+window.calculateLove = function () {
   const name1 = document.getElementById("name1").value.trim().toLowerCase();
   const name2 = document.getElementById("name2").value.trim().toLowerCase();
   const result = document.getElementById("result");
@@ -55,8 +75,8 @@ function calculateLove() {
 
   button.disabled = true;
 
-  // ✅ Save to Firebase
-  firebase.database().ref("loveEntries").push({
+  // Save to Firebase Realtime Database
+  push(ref(database, 'loveEntries'), {
     name1: displayName1,
     name2: displayName2,
     percentage: percentage,
@@ -69,4 +89,4 @@ function calculateLove() {
     result.innerHTML += `<br><small style="color:red;">Failed to save data 😢</small>`;
     button.disabled = false;
   });
-}
+};
