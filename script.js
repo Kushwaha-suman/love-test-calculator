@@ -27,7 +27,7 @@ function calculateLove() {
       💫 True Eternal Love that the universe itself admires. 💫
     `;
   } else {
-    percentage = Math.floor(Math.random() * 21) + 80; // 80 to 100%
+    percentage = Math.floor(Math.random() * 21) + 80;
 
     if (percentage > 95) {
       message = "💖 You’re made for each other 💖";
@@ -55,25 +55,18 @@ function calculateLove() {
 
   button.disabled = true;
 
-  fetch("https://script.google.com/macros/s/AKfycbzFLNF8EL5hCdaDyeylpt2IAJYX8EWxzEPt2R_x6kGGE-PlznwcBIOGc52HrWEfK0DQ/exec", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name1: displayName1,
-      name2: displayName2,
-      percentage: percentage,
-    }),
-  })
-  .then(response => response.text())
-  .then(data => {
-    console.log("Data sent to Google Sheets:", data);
+  // ✅ Save to Firebase
+  firebase.database().ref("loveEntries").push({
+    name1: displayName1,
+    name2: displayName2,
+    percentage: percentage,
+    timestamp: new Date().toISOString()
+  }).then(() => {
+    console.log("Saved to Firebase");
     button.disabled = false;
-  })
-  .catch(error => {
-    console.error("Error sending to Google Sheets:", error);
-    result.innerHTML += `<br><small style="color:red;">Failed to save data, try again later.</small>`;
+  }).catch(error => {
+    console.error("Firebase error:", error);
+    result.innerHTML += `<br><small style="color:red;">Failed to save data 😢</small>`;
     button.disabled = false;
   });
 }
