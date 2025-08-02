@@ -16,9 +16,7 @@ function calculateLove() {
     ["khushi", "suman"]
   ];
 
-  const isSpecial = specialPairs.some(
-    ([a, b]) => name1 === a && name2 === b
-  );
+  const isSpecial = specialPairs.some(([a, b]) => name1 === a && name2 === b);
 
   let percentage, message;
 
@@ -48,7 +46,7 @@ function calculateLove() {
     ${message}
   `;
 
-  // 👉 Send data to Google Sheets
+  // Send data to Google Sheets
   fetch("https://script.google.com/macros/s/AKfycbzM4175sHET1QhwIPpm8ep58sjvhZqzV8OT0hh0QPDBTGB13h_sUcpE5upSmA5bhoL5/exec", {
     method: "POST",
     headers: {
