@@ -8,7 +8,6 @@ function calculateLove() {
     return;
   }
 
-  // Special love conditions (Always 100%)
   const specialPairs = [
     ["suman", "aditi"],
     ["aditi", "suman"],
@@ -47,7 +46,7 @@ function calculateLove() {
   `;
 
   // Send data to Google Sheets
-  fetch("https://script.google.com/macros/s/AKfycbzM4175sHET1QhwIPpm8ep58sjvhZqzV8OT0hh0QPDBTGB13h_sUcpE5upSmA5bhoL5/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbzt2oPRgnp1XPWI0rHmdW5V_94UPG4_t9j4aDYq7txe_vpGQioJBABoLIy-3DrWoVbJAw/exec", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
